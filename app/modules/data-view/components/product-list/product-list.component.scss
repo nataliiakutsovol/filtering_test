@@ -1,0 +1,11 @@
+
+.page-body {
+    background-color: #f2f2f2;
+
+    .product-list {
+        display: grid;
+        justify-self: center;
+        max-width: max-content;
+        grid-template-columns: 335px 335px 335px;
+    }
+}

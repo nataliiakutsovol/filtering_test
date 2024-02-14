@@ -1,0 +1,22 @@
+<section class="page-body">
+    <app-filters></app-filters>
+    <div *ngIf="(filteredData$ | async)?.length else noFilters" class="container product-list">
+        <div *ngFor="let product of  filteredData$ | async | 
+        slice: lowValue : highValue">
+            <app-product-item [product]="product"></app-product-item>
+        </div>
+    </div>
+    <mat-paginator *ngIf="(filteredData$ | async)?.length" [length]="(filteredData$ | async)?.length" [pageSize]="20"
+    (page)="getPaginatorData($event)" showFirstLastButtons></mat-paginator>
+</section>
+
+<ng-template #noFilters>
+    <div class="container product-list">
+        <div *ngFor="let product of  getAllProducts$ | async | 
+        slice: lowValue : highValue">
+            <app-product-item [product]="product"></app-product-item>
+        </div>
+    </div>
+    <mat-paginator [length]="(getAllProducts$ | async)?.length" [pageSize]="20"
+    (page)="getPaginatorData($event)" showFirstLastButtons></mat-paginator>
+</ng-template>

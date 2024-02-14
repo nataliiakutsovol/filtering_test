@@ -1,0 +1,37 @@
+<section>
+    <div class="container filters-container">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" placeholder="Type at least 3 symbols" id="name"
+                [(ngModel)]="selectedNameItem" (change)="filterBy('name', selectedNameItem)">
+        </div>
+        <div class="form-group">
+            <label for="color">Select color</label>
+            <ng-select class="form-control" id="color" [items]="colors" [(ngModel)]="selectedColorItem"
+                (change)="filterBy('colors', selectedColorItem)">
+            </ng-select>
+        </div>
+        <div class="form-group">
+            <label for="category">Select category</label>
+            <ng-select class="form-control" id="category" [items]="categories" [(ngModel)]="selectedCategoryItem"
+                (change)="filterBy('category', selectedCategoryItem)">
+            </ng-select>
+        </div>
+        <div class="form-group">
+            <label class="u-label--medium" for="timeToExpire">Price </label>
+            <div class="d-flex">
+                <span class="time-to-expire">
+                    <input style="width: 70px" type="number" min="0" max="1000" id="price"
+                        class="form-control u-input" (change)="filterByPrice('min', $event)" />
+                </span>
+                <label class="mat-radio-label-content">min</label>
+                <span class="time-to-expire">
+                    <input style="width: 70px" min="0" max="1000" type="number" id="price"
+                        class="form-control u-input" (change)="filterByPrice('max', $event)" />
+                </span>
+                <label class="mat-radio-label-content">max</label>
+
+            </div>
+        </div>
+    </div>
+</section>
